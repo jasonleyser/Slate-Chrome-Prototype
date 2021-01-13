@@ -14,7 +14,7 @@ function start_slate() {
 
   imgSrcs.forEach(function(item) {
     var div = document.createElement("div");
-    div.className = "col-md-2 col-sm-6";
+    div.className = "col-md-2 col-sm-6 img_container";
     var img = document.createElement("img");
     img.src = item.src;
     img.className = "list_img";
@@ -24,6 +24,7 @@ function start_slate() {
     checkbox.setAttribute("type", "checkbox");
     checkbox.value = item.src;
     checkbox.id = "check-" + item.id;
+    checkbox.className = "img_checkbox"
 
     img.onclick = function() {
       select_image(item)
