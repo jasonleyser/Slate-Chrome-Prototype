@@ -14,7 +14,7 @@ function start_slate() {
 
   imgSrcs.forEach(function(item) {
     var div = document.createElement("div");
-    div.className = "col-md-2 col-sm-6 img_container";
+    div.className = "img_container item";
     var img = document.createElement("img");
     img.src = item.src;
     img.className = "list_img";
@@ -42,7 +42,7 @@ function start_slate() {
 
     div.appendChild(checkbox);
     div.appendChild(img);
-    document.getElementById("list_all_images").appendChild(div);
+    document.getElementById("image_grid").appendChild(div);
   });
 
 }

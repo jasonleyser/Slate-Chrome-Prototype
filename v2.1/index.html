@@ -44,6 +44,42 @@
       color: #fff;
       border-radius: 2px;
     }
+    .grid {
+       display: grid;
+       grid-gap: 10px;
+       grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+       grid-auto-rows: 200px;
+    }
+
+    .masonry {
+        column-count: 4;
+        column-gap: 1em;
+      }
+
+      .item {
+        background-color: #eee;
+        display: inline-block;
+        margin: 0 0 1em;
+        width: 100%;
+      }
+
+@media only screen and (min-width: 1024px) {
+  .masonry {
+    column-count: 4;
+  }
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 540px) {
+  .masonry {
+    column-count: 2;
+  }
+}
 
   </style>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -55,8 +91,11 @@
     <div style="overflow: scroll;position:relative;width:90%;height:75%;background-color:#fff;top:24px;bottom: 0;left: 0;right: 0;margin: auto;padding: 32px">
       <a href="" onClick="stop_slate()">Close</a>
       <div id="page_images">
-        <div id="list_all_images" class="row">
-        </div>
+
+        <div class="masonry" id="image_grid"></div>
+
+        <h1>-----------</h1>
+
       </div>
     </div>
     <div style="position:relative;width:60%;height:56px;line-height:56px;padding-left:56px; background-color:#4B4A4D;color: #fff;top:48px;bottom: 0;left: 0;right: 0;margin: auto;">
