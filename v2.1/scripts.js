@@ -4,10 +4,11 @@ function start_slate() {
   document.getElementById('main').style.display = "block";
   var all_images = document.getElementsByTagName("img");
   var imgSrcs = [];
-
+  var position = 0;
   for (var i = 0; i < all_images.length; i++) {
+      position++;
       var id = create_id();
-      imgSrcs.push({ id: id, src: all_images[i].src, alt: all_images[i].alt });
+      imgSrcs.push({ id: id, src: all_images[i].src, alt: all_images[i].alt, page_position: position });
   }
 
   console.log(imgSrcs);
