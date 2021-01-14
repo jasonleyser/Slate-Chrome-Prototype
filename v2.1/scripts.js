@@ -1,19 +1,68 @@
+var all_files = [];
 var upload_queue = [];
+
+var filters = {
+  min_width: 25,
+  min_height: 25
+};
 
 function start_slate() {
   document.getElementById('main').style.display = "block";
+
+  var min_width_slider = document.getElementById("min_width_slider");
+  var min_width_output = document.getElementById("min_width_output");
+
+  min_width_output.value = 25 + "px";
+  min_width_slider.value = 25;
+
+
+  min_width_slider.oninput = function() {
+    var val = document.getElementById("min_width_slider").value //gets the oninput value
+    document.getElementById('min_width_output').innerHTML = val + "px" //displays this value to the html page
+  };
+
+  var blur = document.getElementById('blur_layer');
+  blur.addEventListener('click', function (event) {
+      stop_slate();
+  });
+
   var all_images = document.getElementsByTagName("img");
   var imgSrcs = [];
   var position = 0;
+
   for (var i = 0; i < all_images.length; i++) {
       position++;
       var id = create_id();
-      imgSrcs.push({ id: id, src: all_images[i].src, alt: all_images[i].alt, page_position: position });
+      imgSrcs.push({
+        id: id,
+        src: all_images[i].src,
+        alt: all_images[i].alt,
+        type: 'jpg',
+        page_position: position,
+        width: all_images[i].width,
+        height: Math.floor(Math.random() * 2000)
+      });
   }
 
   console.log(imgSrcs);
+  show_images(imgSrcs);
+  all_files = imgSrcs;
 
-  imgSrcs.forEach(function(item) {
+  var select_all = document.getElementById('select_all');
+  select_all.onclick = function() {
+    select_all(imgSrcs)
+  };
+
+}
+
+
+function show_images(images_array) {
+  var img_array = []
+  img_array = images_array;
+  document.getElementById("image_grid").innerHTML = "";
+  document.getElementById("num_results").innerHTML = img_array.length;
+
+  img_array.forEach(function(item) {
     var div = document.createElement("div");
     div.className = "img_container item";
     var img = document.createElement("img");
@@ -48,8 +97,9 @@ function start_slate() {
 
 }
 
+
 function stop_slate() {
-  imgSrcs = [];
+  all_files = [];
   document.getElementById('main').style.display = "none";
 }
 
@@ -64,3 +114,14 @@ function select_image(img) {
 function create_id() {
   return '_' + Math.random().toString(36).substr(2, 9);
 };
+
+function select_all(images) {
+  console.log('all images!!!', images);
+}
+
+function filer_results() {
+  filters.min_width = document.getElementById("min_width_slider").value;
+  const result = all_files.filter(file => file.width > filters.min_width);
+  show_images(result);
+  console.log('result!!:', result);
+}
