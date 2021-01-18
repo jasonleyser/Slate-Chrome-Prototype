@@ -28,7 +28,7 @@ function create_api_input({ name, key }) {
   key_input.className = "text-input";
   key_input.setAttribute("type", "password");
   key_input.value = key;
-  key_input.placeholder = "Key";
+  //key_input.placeholder = "Key";
 
 
   var name_div = document.createElement("div");
@@ -37,7 +37,7 @@ function create_api_input({ name, key }) {
   name_input.className = "text-input";
   name_input.setAttribute('type', 'text');
   name_input.value = name;
-  name_input.placeholder = "Name";
+  //name_input.placeholder = "Name";
 
 
   key_div.appendChild(key_input);
