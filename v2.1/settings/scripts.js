@@ -2,8 +2,9 @@ var keys = [];
 
 function start() {
 
-  keys.push({ name: 'work', key: '444442342424234234234' });
-  keys.push({ name: 'personal', key: '3434343434343434' });
+  keys.push({ name: 'Work', key: '444442342424234234234444442342424234234234' });
+  keys.push({ name: 'Personal', key: '444442342424234234234444442342424234234234' });
+  keys.push({ name: '', key: '' });
 
   keys.forEach(function(key) {
     console.log(key);
@@ -44,4 +45,17 @@ function create_api_input({ name, key }) {
 
   row.appendChild(key_div);
   row.appendChild(name_div);
+}
+
+function min_size_range (value) {
+  var num = document.getElementById('min_size_num');
+
+  if(value == 0) {
+    num.innerHTML = 'None';
+  }else if (value == 2000) {
+    num.innerHTML = '+2000mb';
+  }else{
+    num.innerHTML = value + "mb"
+  }
+
 }
