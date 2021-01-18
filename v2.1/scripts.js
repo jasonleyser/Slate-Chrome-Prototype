@@ -27,6 +27,13 @@ function start_slate() {
   });
 
   var all_images = document.getElementsByTagName("img");
+  var all_audio = document.getElementsByTagName("audio");
+
+  var all_elements = document.getElementsByTagName("*");
+  console.log('ALLLL', all_elements);
+
+
+  console.log(all_audio)
   var imgSrcs = [];
   var position = 0;
 
@@ -41,6 +48,19 @@ function start_slate() {
         page_position: position,
         width: all_images[i].width,
         height: Math.floor(Math.random() * 2000)
+      });
+  }
+
+  for (var i = 0; i < all_audio.length; i++) {
+      console.log(all_audio[i].src)
+      imgSrcs.push({
+        id: id,
+        src: all_audio[i].src,
+        alt: all_audio[i].alt,
+        type: 'mp3',
+        page_position: position,
+        width: null,
+        height: null
       });
   }
 
@@ -67,6 +87,9 @@ function show_images(images_array) {
     div.className = "img_container item";
     var img = document.createElement("img");
     img.src = item.src;
+    if(item.type == 'mp3'){
+      img.src = 'https://www.tgcstore.net/images/audio-thumbnail.jpg';
+    }
     img.className = "list_img";
     img.id = "img-" + item.id;
 
