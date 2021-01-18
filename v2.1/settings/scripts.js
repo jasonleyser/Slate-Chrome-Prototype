@@ -14,6 +14,7 @@ function start() {
 
 function add_key(name, key) {
   keys.push({ name: name, key: key });
+  create_api_input({ name: name, key: key })
   console.log(keys)
 }
 
