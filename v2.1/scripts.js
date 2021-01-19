@@ -26,41 +26,33 @@ function start_slate() {
       stop_slate();
   });
 
-  var all_images = document.getElementsByTagName("img");
-  var all_audio = document.getElementsByTagName("audio");
+  var all_images = document.querySelectorAll('img,audio,video')
 
-  var all_elements = document.getElementsByTagName("*");
-  console.log('ALLLL', all_elements);
-
-
-  console.log(all_audio)
   var imgSrcs = [];
   var position = 0;
 
   for (var i = 0; i < all_images.length; i++) {
       position++;
       var id = create_id();
+      var ext = all_images[i].currentSrc.split('.').pop()
+      var type;
+
+      if (ext === 'mp4' || ext === 'ogg') {
+        type = 'video';
+      }else if (ext === 'mp3') {
+        type = 'audio';
+      }else{
+        type = 'image';
+      }
+
       imgSrcs.push({
         id: id,
-        src: all_images[i].src,
+        src: all_images[i].currentSrc,
         alt: all_images[i].alt,
-        type: 'jpg',
+        type: type,
         page_position: position,
         width: all_images[i].width,
         height: Math.floor(Math.random() * 2000)
-      });
-  }
-
-  for (var i = 0; i < all_audio.length; i++) {
-      console.log(all_audio[i].src)
-      imgSrcs.push({
-        id: id,
-        src: all_audio[i].src,
-        alt: all_audio[i].alt,
-        type: 'mp3',
-        page_position: position,
-        width: null,
-        height: null
       });
   }
 
@@ -86,9 +78,14 @@ function show_images(images_array) {
     var div = document.createElement("div");
     div.className = "img_container item";
     var img = document.createElement("img");
-    img.src = item.src;
-    if(item.type == 'mp3'){
+    if(item.type == 'audio'){
       img.src = 'https://www.tgcstore.net/images/audio-thumbnail.jpg';
+    }
+    if(item.type == 'video'){
+      img.src = 'https://kucumberskinlounge.com/app/themes/kucumber-skin-lounge/dist/images/default-thumb.jpg';
+    }
+    if(item.type == 'image'){
+      img.src = item.src;
     }
     img.className = "list_img";
     img.id = "img-" + item.id;
@@ -147,4 +144,14 @@ function filer_results() {
   const result = all_files.filter(file => file.width > filters.min_width);
   show_images(result);
   console.log('result!!:', result);
+}
+
+function getFileType(url) {
+   if (url) {
+      var m = url.toString().match(/.*\/(.+?)\./);
+      if (m && m.length > 1) {
+         return m[1];
+      }
+   }
+   return "";
 }
