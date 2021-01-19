@@ -3,7 +3,7 @@
 
 <head>
   <title>Slate Chrome Extension V2 - Settings</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
@@ -39,7 +39,7 @@
       transition: 200ms ease all;
       padding-left: 16px;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07), inset 0 0 0 2px #ECECEC;
-      margin-top:16px;
+      margin-top: 16px;
     }
 
     .btn {
@@ -60,13 +60,16 @@
       cursor: pointer;
       color: #fff;
     }
+
     .btn:focus {
       outline: 0;
       border: 0;
     }
+
     .primary {
       background-color: #0666BB;
     }
+
     .primary:hover {
       background-color: #065ca8;
     }
@@ -86,7 +89,7 @@
       top: 24px;
     }
 
-    .checkbox{
+    .checkbox {
       transform: scale(1.5);
       cursor: pointer;
     }
@@ -110,11 +113,12 @@
       appearance: none;
       width: 20px;
       height: 20px;
-      border-radius:50%;
-      border:2px solid #f8f8f8;
+      border-radius: 50%;
+      border: 2px solid #f8f8f8;
       background: #0F0E12;
       cursor: pointer;
     }
+
     .radio {
       border: 1px solid #0666BB;
       border-radius: 4px;
@@ -123,135 +127,148 @@
       margin: auto;
       background-color: #E9F4FE;
     }
+
     .switch {
-  position: relative;
-  display: inline-block;
-}
-.switch-input {
-  display: none;
-}
-.switch-label {
-  display: block;
-  width: 48px;
-  height: 24px;
-  text-indent: -150%;
-  clip: rect(0 0 0 0);
-  color: transparent;
-  user-select: none;
-}
-.switch-label::before,
-.switch-label::after {
-  content: "";
-  display: block;
-  position: absolute;
-  cursor: pointer;
-}
-.switch-label::before {
-  width: 100%;
-  height: 100%;
-  background-color: #dedede;
-  border-radius: 9999em;
-  -webkit-transition: background-color 0.25s ease;
-  transition: background-color 0.25s ease;
-}
-.switch-label::after {
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: #fff;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
-  -webkit-transition: left 0.25s ease;
-  transition: left 0.25s ease;
-}
-.switch-input:checked + .switch-label::before {
-  background-color: #377749;
-}
-.switch-input:checked + .switch-label::after {
-  left: 24px;
-}
+      position: relative;
+      display: inline-block;
+    }
+
+    .switch-input {
+      display: none;
+    }
+
+    .switch-label {
+      display: block;
+      width: 48px;
+      height: 24px;
+      text-indent: -150%;
+      clip: rect(0 0 0 0);
+      color: transparent;
+      user-select: none;
+    }
+
+    .switch-label::before,
+    .switch-label::after {
+      content: "";
+      display: block;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .switch-label::before {
+      width: 100%;
+      height: 100%;
+      background-color: #dedede;
+      border-radius: 9999em;
+      -webkit-transition: background-color 0.25s ease;
+      transition: background-color 0.25s ease;
+    }
+
+    .switch-label::after {
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #fff;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+      -webkit-transition: left 0.25s ease;
+      transition: left 0.25s ease;
+    }
+
+    .switch-input:checked+.switch-label::before {
+      background-color: #377749;
+    }
+
+    .switch-input:checked+.switch-label::after {
+      left: 24px;
+    }
   </style>
 </head>
 
 <body onload="start();">
   <div class="row">
     <div class="col-lg-6" style="padding: 16px 16px">
-      <svg
-          height="40px"
-          fill="none"
-          viewBox="0 0 236 79"
-          xmlns="http://www.w3.org/2000/svg">
-          <g clipRule="evenodd" fill="currentColor" fillRule="evenodd">
-            <path d="m54.9707 59.4117v7.0358l13.074-7.5436v-21.3229l-34.2575-19.7804v7.0358l28.1687 16.2625v14.2741zm6.9852-36.1851v8.0481l6.0888 3.5251v-15.0977l-34.0983-19.6808598-18.4574 10.6455598v21.4948l30.9779 17.8671v14.2923l-12.5205 7.2229-27.85767-16.0805v-8.048l-6.08873-3.5252v15.0977l33.9464 19.6051 18.6093-10.7512v-21.3145l-30.978-17.8913v-14.4559l12.3687-7.14023zm-48.8819-4.1314v-7.0403l-13.074 7.5714v21.4733l34.1056 19.6917v-7.038l-28.01687-16.1714v-14.4314z" />
-          </g>
-        </svg>
+      <svg height="40px" fill="none" viewBox="0 0 236 79" xmlns="http://www.w3.org/2000/svg">
+        <g clipRule="evenodd" fill="currentColor" fillRule="evenodd">
+          <path
+            d="m54.9707 59.4117v7.0358l13.074-7.5436v-21.3229l-34.2575-19.7804v7.0358l28.1687 16.2625v14.2741zm6.9852-36.1851v8.0481l6.0888 3.5251v-15.0977l-34.0983-19.6808598-18.4574 10.6455598v21.4948l30.9779 17.8671v14.2923l-12.5205 7.2229-27.85767-16.0805v-8.048l-6.08873-3.5252v15.0977l33.9464 19.6051 18.6093-10.7512v-21.3145l-30.978-17.8913v-14.4559l12.3687-7.14023zm-48.8819-4.1314v-7.0403l-13.074 7.5714v21.4733l34.1056 19.6917v-7.038l-28.01687-16.1714v-14.4314z" />
+        </g>
+      </svg>
     </div>
     <div class="col-lg-4 end-lg">
       <button class="btn primary" style="position: absolute; margin-right:0px; margin-top:40px">Save settings</button>
     </div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-5">
-      <div class="box" style="padding: 16px 16px">
-        <h2>API</h2>
-        <p style="color: #B2B2B2;margin-top:-8px">Default file retrival options</p>
+    <div class="col-lg-6">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-11">
+        <div class="box" style="padding: 16px 16px">
+          <h2>API</h2>
+          <p style="color: #B2B2B2;margin-top:-8px">Default file retrival options</p>
 
-        <div class="row" style="margin-bottom:-16px">
-          <div class="col-lg-8">
-            <p style="margin-left:4px;">Key</p>
+          <div class="row" style="margin-bottom:-16px">
+            <div class="col-lg-8">
+              <p style="margin-left:4px;">Key</p>
+            </div>
+            <div class="col-lg-4">
+              <p style="margin-left:4px">Name</p>
+            </div>
           </div>
-          <div class="col-lg-4">
-            <p style="margin-left:4px">Name</p>
-          </div>
-        </div>
-        <div class="row" id="api_inputs"></div>
-        <div class="row end-lg" style="margin-top:16px">
-          <div class="col-lg-6">
+          <div class="row" id="api_inputs"></div>
+          <div class="row end-lg" style="margin-top:16px">
+            <div class="col-lg-6">
               <a class="btn transparent" href="https://slate.host/" target="_blank">Create new </a>
               <button onclick="add_key('', '')" class="btn primary">+ Add </buttton>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+    <div class="col-lg-6">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-11">
+        <div class="box" style="padding: 16px 16px">
+          <h2>Settings</h2>
+          <p style="color: #B2B2B2;margin-top:-8px">Default file retrival options</p>
+          <div class="row">
+            <div class="col-lg-6">
+              <p style="margin-bottom: 4px">Min size: <span id="min_size_num" style="color: #065ca8">None</span></p>
+              <input class="slider" oninput="min_size_range(this.value)" id="min_size_range" type="range" min="0" step="10" max="2000" value="0" style="width:100%;">
+            </div>
+            <div class="col-lg-6">
+              <p style="margin-bottom: 4px">Max size: <span id="min_size_num" style="color: #065ca8">None</span></p>
+              <input class="slider" type="range" min="0" step="10" max="2000" value="2000" style="width:100%;">
+            </div>
+
+            <div class="col-lg-12">
+              <br />
+              <p style="color: #B2B2B2">File types</p>
+              <input class="checkbox" type="checkbox" id="images" name="images" value="images" checked>
+              <label style="margin-left:8px;font-size:16px" for="images">Images</label>
+              <input style="margin-left:40px" class="checkbox" type="checkbox" id="video" name="video" value="video" checked>
+              <label style="margin-left:8px;font-size:16px" for="video">Videos</label>
+              <input style="margin-left:40px" class="checkbox" type="checkbox" id="audio" name="audio" value="audio" checked>
+              <label style="margin-left:8px;font-size:16px" for="audio">Audio</label>
+            </div>
+            <div class="col-lg-12" style="margin-top:64px">
+              <p style="color: #B2B2B2">Style</p>
+              <form action="#">
+                <div class="switch">
+                  <input id="switch-1" type="checkbox" class="switch-input" checked />
+                  <label style="color:#fff" for="switch-1" class="switch-label"></label>
+                </div>
+                <b style="margin-left: 8px;">Dark mode</b>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-lg-1"></div>
-    <div class="col-lg-5">
-      <div class="box" style="padding: 16px 16px">
-        <h2>Settings</h2>
-        <p style="color: #B2B2B2;margin-top:-8px">Default file retrival options</p>
-        <div class="row">
-          <div class="col-lg-6">
-            <p style="margin-bottom: 4px">Min size: <span id="min_size_num" style="color: #065ca8">None</span></p>
-            <input class="slider" oninput="min_size_range(this.value)" id="min_size_range" type="range" min="0" step="10" max="2000" value="0" style="width:100%;">
-          </div>
-          <div class="col-lg-6">
-            <p style="margin-bottom: 4px">Max size: <span id="min_size_num" style="color: #065ca8">None</span></p>
-            <input class="slider"  type="range" min="0" step="10" max="2000" value="2000" style="width:100%;">
-          </div>
 
-          <div class="col-lg-12">
-            <br />
-            <p style="color: #B2B2B2">File types</p>
-            <input class="checkbox" type="checkbox" id="images" name="images" value="images" checked>
-            <label style="margin-left:8px;font-size:16px" for="images">Images</label>
-            <input style="margin-left:40px" class="checkbox" type="checkbox" id="video" name="video" value="video" checked>
-            <label style="margin-left:8px;font-size:16px" for="video">Videos</label>
-            <input style="margin-left:40px" class="checkbox" type="checkbox" id="audio" name="audio" value="audio" checked>
-            <label style="margin-left:8px;font-size:16px" for="audio">Audio</label>
-          </div>
-          <div class="col-lg-12" style="margin-top:64px">
-            <p style="color: #B2B2B2">Style</p>
-            <form action="#">
-              <div class="switch">
-                <input id="switch-1" type="checkbox" class="switch-input" checked />
-                <label style="color:#fff" for="switch-1" class="switch-label"></label>
-              </div>
-              <b style="margin-left: 8px;">Dark mode</b>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </body>
 <script src="scripts.js"></script>
+
 </html>
