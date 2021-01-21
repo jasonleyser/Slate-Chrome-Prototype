@@ -27,9 +27,16 @@ function start() {
   //get all API keys
   var api_db = new LDB.Collection('api_keys');
   const API_KEYS = api_db.items;
+  console.log(API_KEYS);
+  if(API_KEYS.length == 0) {
+    const input = new ApiInput({ name: '', key: '' });
+    return;
+  }
+
   API_KEYS.forEach(function(api) {
     const input = new ApiInput({ name: api.name, key: api.key });
   });
+
 }
 
 function AddKey({ name, key }) {
