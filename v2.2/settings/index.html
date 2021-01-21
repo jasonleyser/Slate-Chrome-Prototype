@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Slate Chrome Extension V2 - Settings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css">
+  <link rel="stylesheet" href="../styles/ui.css" type="text/css">
+  <link rel="stylesheet" href="../styles/main.css" type="text/css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+    body {
+      background-color: #F8F8F8;
+      color: #0F0E12;
+      font-family: Inter;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      padding: 16px 16px;
+      background-color: #F8F8F8;
+      color: #0F0E12;
+      z-index: 999999;
+    }
+
+    .dark-mode {
+      transition: 0.5s ease-in-out;
+      background-color: #0F0E12;
+      color: #F8F8F8;
+    }
+
+    .container {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      font-family: 'Inter';
+    }
+
+    .text-input {
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      width: 100%;
+      height: 40px;
+      background: #fff;
+      color: #000;
+      border-radius: 4px;
+      display: flex;
+      font-size: 14px;
+      align-items: center;
+      justify-content: flex-start;
+      outline: 0;
+      border: 0;
+      box-sizing: border-box;
+      transition: 200ms ease all;
+      padding-left: 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07), inset 0 0 0 2px #ECECEC;
+      margin-top: 12px;
+    }
+
+    .btn {
+      box-sizing: border-box;
+      border-radius: 4px;
+      outline: 0;
+      border: 0;
+      min-height: 40px;
+      padding: 4px 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      transition: 200ms ease all;
+      overflow-wrap: break-word;
+      user-select: none;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .btn:focus {
+      outline: 0;
+      border: 0;
+    }
+
+    .primary {
+      background-color: #0666BB;
+    }
+
+    .primary:hover {
+      background-color: #065ca8;
+    }
+
+    .transparent {
+      background-color: transparent;
+      color: #0666BB;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .transparent:hover {
+      color: #065ca8;
+    }
+
+    .api-key {
+      top: 24px;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+    }
+
+    .switch-input {
+      display: none;
+    }
+
+    .switch-label {
+      display: block;
+      width: 48px;
+      height: 24px;
+      text-indent: -150%;
+      clip: rect(0 0 0 0);
+      color: transparent;
+      user-select: none;
+    }
+
+    .switch-label::before,
+    .switch-label::after {
+      content: "";
+      display: block;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .switch-label::before {
+      width: 100%;
+      height: 100%;
+      background-color: #dedede;
+      border-radius: 9999em;
+      -webkit-transition: background-color 0.25s ease;
+      transition: background-color 0.25s ease;
+    }
+
+    .switch-label::after {
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #fff;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+      -webkit-transition: left 0.25s ease;
+      transition: left 0.25s ease;
+    }
+
+    .switch-input:checked+.switch-label::before {
+      background-color: #006837;
+    }
+
+    .switch-input:checked+.switch-label::after {
+      left: 24px;
+    }
+  </style>
+</head>
+
+<body onload="start();">
+  <div class="row center-lg" style="text-align: left !important;">
+    <div class="col-lg-6">
+      <div id="navbar" class="navbar col-lg-12">
+        <svg style="padding-top:8px; margin-left:-28px" height="32px" fill="none" viewBox="0 0 236 79" xmlns="http://www.w3.org/2000/svg">
+          <g clipRule="evenodd" fill="currentColor" fillRule="evenodd">
+            <path
+              d="m54.9707 59.4117v7.0358l13.074-7.5436v-21.3229l-34.2575-19.7804v7.0358l28.1687 16.2625v14.2741zm6.9852-36.1851v8.0481l6.0888 3.5251v-15.0977l-34.0983-19.6808598-18.4574 10.6455598v21.4948l30.9779 17.8671v14.2923l-12.5205 7.2229-27.85767-16.0805v-8.048l-6.08873-3.5252v15.0977l33.9464 19.6051 18.6093-10.7512v-21.3145l-30.978-17.8913v-14.4559l12.3687-7.14023zm-48.8819-4.1314v-7.0403l-13.074 7.5714v21.4733l34.1056 19.6917v-7.038l-28.01687-16.1714v-14.4314z" />
+          </g>
+        </svg>
+        <span style="position: absolute; right: 0px; margin-top:8px">
+          <button class="btn transparent" href="https://slate.host/" target="_blank">Save & close</button>
+          <button class="btn primary">Save</button>
+        </span>
+      </div>
+
+      <div class="settings-container row">
+        <div class="col-lg-8" style="padding-right: 32px">
+          <h2>File types</h2>
+          <p style="color: #B2B2B2;margin-top:-8px">Select the types of files you want to retrieve.</p>
+        </div>
+        <div class="col-lg-4 end-lg">
+          <div style="margin-top: 24px">
+            <b style="margin-right: 16px; font-size: 16px">Images</b>
+            <input type="checkbox" hidden="hidden" id="images" checked>
+            <label class="switch" for="images"></label>
+          </div>
+
+          <div style="margin-top: 32px">
+            <b style="margin-right: 16px; font-size:16px">Videos</b>
+            <input type="checkbox" hidden="hidden" id="videos" checked>
+            <label class="switch" for="videos"></label>
+          </div>
+
+          <div style="margin-top: 32px">
+            <b style="margin-right: 16px; font-size: 16px">Audio</b>
+            <input type="checkbox" hidden="hidden" id="audio" checked>
+            <label class="switch" for="audio"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-container row">
+        <div class="col-lg-8" style="padding-right: 32px">
+          <h2>Image size</h2>
+          <p style="color: #B2B2B2;margin-top:-8px">Select the sizes of images you want to retrieve.</p>
+        </div>
+        <div class="col-lg-4 end-lg">
+          <div style="margin-top: 24px">
+            <b style="margin-right: 16px; font-size: 16px">Icon</b>
+            <input type="checkbox" hidden="hidden" id="images-icon">
+            <label class="switch" for="images-icon"></label>
+          </div>
+
+          <div style="margin-top: 32px">
+            <b style="margin-right: 16px; font-size: 16px">Small</b>
+            <input type="checkbox" hidden="hidden" id="images-small">
+            <label class="switch" for="images-small"></label>
+          </div>
+
+          <div style="margin-top: 32px">
+            <b style="margin-right: 16px; font-size: 16px">Medium</b>
+            <input type="checkbox" hidden="hidden" id="images-medium" checked>
+            <label class="switch" for="images-medium"></label>
+          </div>
+
+          <div style="margin-top: 32px">
+            <b style="margin-right: 16px; font-size: 16px">Large</b>
+            <input type="checkbox" hidden="hidden" id="images-large" checked>
+            <label class="switch" for="images-large"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-container row">
+        <div class="col-lg-8" style="padding-right: 32px">
+          <h2>Style</h2>
+          <p style="color: #B2B2B2;margin-top:-8px">Select the light or dark version of Slate.</p>
+        </div>
+        <div class="col-lg-4 end-lg">
+          <div style="margin-top: 24px">
+            <b style="margin-right: 16px; font-size: 16px">Dark mode</b>
+            <input onchange="switch_mode()" type="checkbox" hidden="hidden" id="slate-style">
+            <label class="switch" for="slate-style"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-container row">
+        <div class="col-lg-12">
+          <h2>API keys</h2>
+          <p style="color: #B2B2B2;margin-top:-8px">Add your API Keys and give them names!</p>
+          <div class="row" id="api_inputs"></div>
+          <div class="row end-lg" style="margin-top:16px">
+            <div class="col-lg-6">
+              <button class="btn transparent" href="https://slate.host/" target="_blank">Create new </button>
+              <button onclick="AddKey('', '')" class="btn primary">+ Add </buttton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script src="scripts.js"></script>
+<script src="../js/db.js"></script>
+<script src="../js/ui/checkbox.js"></script>
+
+</html>
