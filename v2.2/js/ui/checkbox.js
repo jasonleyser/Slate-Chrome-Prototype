@@ -48,7 +48,9 @@ function ApiInput({ name, key, id }) {
   key_input.className = "text-input";
   key_input.setAttribute("type", "password");
   key_input.dataset.api_id = id;
-  key_input.value = key;
+  if(key) {
+    key_input.value = key;
+  }
   key_input.placeholder = 'API Key';
 
 
@@ -58,7 +60,9 @@ function ApiInput({ name, key, id }) {
   name_input.className = "text-input";
   name_input.setAttribute('type', 'text');
   name_input.dataset.api_id = id;
-  name_input.value = name;
+  if(name) {
+    name_input.value = name;
+  }
   name_input.placeholder = 'Name';
 
   key_div.appendChild(key_input);
